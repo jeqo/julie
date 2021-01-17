@@ -8,18 +8,22 @@ More items are plan, check [here](https://github.com/kafka-ops/kafka-topology-bu
 
 ## The motivation 
 
-One of the typical questions while building an Apache Kafka infrastructure is how to handle topics, 
-configurations and the required permissions to use them (Access Control List).
-The Julie Ops cli, in close collaboration with GIT and Jenkins (CI/CD) is here to help you setup an organised and automated way of managing your Kafka Cluster.
+
+A typical question many teams face when building, or growing, an Apache Kafka infrastructure is how to manage
+topics, configuration, metadata, ACLs, etc in a more automated way to provide their teams with the most autonomy 
+possible while reducing the time involved in this administrative tasks. 
+
+The Julie Ops CLI, in close collaboration with Git and CI/CD, (Jenkins, etc) is here to help you build it. 
 
 ## Where's the docs?
 
-We recommend taking time to [read the docs](https://kafka-topology-builder.readthedocs.io/).
-There's quite a bit of detailed information about gitops, Apache Kafka and how this project can help you automate your basic operations tasks.
+We recommend taking time to [read the docs](https://julie-ops.readthedocs.io/).
+There's quite a bit of detailed information about Gitops, Apache Kafka and how this project can help you automate 
+the common operational tasks.
 
-## Automating the Topic Management with CI/CD (Jenkins) and gitops
+## Automating Management with CI/CD and gitops
 
-![KafkaTopologyBuilder](imgs/kafka-topology-builder.png)
+![JulieOps](imgs/julie-ops.png)
 
 You might be wondering what is the usual workflow to implement this approach:
 
@@ -40,9 +44,10 @@ You might be wondering what is the usual workflow to implement this approach:
 
 Considerations:
 
-* Using webhooks, the git server (github, gitlab or bitbucket) will inform the CI/CD system changes had happened and they need to be applied to the cluster.
+* Using webhooks, the git server (github, gitlab or bitbucket) will inform the CI/CD system changes had happened 
+and the need to apply them to the cluster.
 * All changes (git push) to master branch are disabled directly. 
-Changes only can happen with a pull request.
+Changes only can happen with a pull request. Providing a Change Management mechanism to fit into your org procedures.
 
 ## Help??
 
@@ -75,26 +80,26 @@ What can you achieve with this tool:
 * Manage your cluster schemas.
     - Support for Confluent Schema Registry
 
-More details and examples of the functionality can be found in the wiki.  
+Out of the box support for Confluent Cloud and other clouds that enable you to use the AdminClient API. 
 
-### How can I run the topology builder directly?
+### How can I run Julie Ops directly?
 
 This tool is available in multiple formats:
 
+- As a Docker image, available from [docker hub](https://hub.docker.com/r/purbon/kafka-topology-builder) 
 - As an RPM package, for the RedHat alike distributions
 - As a DEB package, for Debian based distros
 - Directly as a fat jar (zip/tar.gz)
+- As a fat jar.
 
 The latest version are available from the [releases](https://github.com/purbon/kafka-topology-builder/releases) page.
-
-The release is as well available in [docker hub](https://hub.docker.com/r/purbon/kafka-topology-builder).
 
 #### How to execute the tool
 
 This is how you can run the tool directly as a docker image:
 
 ```bash 
-docker run purbon/kafka-topology-builder:latest kafka-topology-builder.sh  --help
+docker run purbon/julie-ops:latest julie-ops-cli.sh  --help
 Parsing failed cause of Missing required options: topology, brokers, clientConfig
 usage: cli
     --allowDelete          Permits delete operations for topics and
@@ -109,8 +114,9 @@ usage: cli
     --version              Prints useful version information.
 ```
 
-If you install the tool as rpm, you will have available in your $PATH the _kafka-topology-builder.sh_.
-You can run this script with the same options observed earlier.  
+If you install the tool as rpm, you will have available in your $PATH the _julie-ops-cli.sh_.
+You can run this script with the same options observed earlier, however you will need to be using, or be in the group,
+for the user julie-kafka. 
 
 #### An example topology
 
@@ -162,19 +168,26 @@ projects:
 ```
 
 more examples can be found at the [example/](example/) directory. 
-Also check the documentation on ACL and RBAC in [the docs](https://kafka-topology-builder.readthedocs.io/) for information on what ACLs are created.
+
+Also, please check, the documentation in [the docs](https://kafka-topology-builder.readthedocs.io/) for extra information and
+examples on managing ACLs, RBAC, Principales, Schemas and many others.  
 
 ## Interested in contributing back?
 
-Interested on contributing back? might be have an idea for a great future? or wanna fix a bug? Check our [contributing](CONTRIBUTING.md) doc for guidance.
+Interested on contributing back? might be have an idea for a great future? or wanna fix a bug?
+Check our [contributing](CONTRIBUTING.md) doc for guidance.
 
 ## Building Julie Ops from scratch (source code)
 
 The project is build using Java and Maven, so both are required if you aim to build the tool from scratch.
-The minimum version of Java supported is Java 8, note it soon will be deprecated here, it is only keep as supported for very legacy environments.
+The minimum version of Java supported is Java 8, note it soon will be deprecated here, it is only keep as supported 
+for very legacy environments.
 
 It is recommended to run Julie Ops with Java 11 and an open JDK version.
 
 ### Building a release
 
 If you are interested on building a release artifact from the source code, check our [release](RELEASE.md) doc for guidance.
+
+Nightly builds as well as release builds are regularly available from the [Actions](https://github.com/kafka-ops/kafka-topology-builder/actions)
+in this project.
