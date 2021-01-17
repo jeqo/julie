@@ -2,8 +2,9 @@
 
 <a href="https://codeclimate.com/github/purbon/kafka-topology-builder/maintainability"><img src="https://api.codeclimate.com/v1/badges/ef4bcda7d1b5fd0a4f1e/maintainability" /></a> ![CI tests](https://github.com/kafka-ops/kafka-topology-builder/workflows/CI%20tests/badge.svg?branch=master) [![Gitter](https://badges.gitter.im/kafka-topology-builder/community.svg)](https://gitter.im/kafka-topology-builder/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Documentation Status](https://readthedocs.org/projects/kafka-topology-builder/badge/?version=latest)](https://kafka-topology-builder.readthedocs.io/?badge=latest)
 
-This tool helps you build proper ACLs for Apache Kafka. The Kafka ACL builder tool knows what do you
-need for each of the products/projects you are planning, either Kafka Connect, Kafka Streams or others.
+Julie Ops helps you automate the management of your things within Apache Kafka, from Topics, Configuration to Metadata but as well
+Access Control, Schemas. 
+More items are plan, check [here](https://github.com/kafka-ops/kafka-topology-builder/issues) for details. 
 
 ## The motivation 
 
