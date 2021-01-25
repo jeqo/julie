@@ -51,7 +51,7 @@ public class AccessControlProviderFactoryTest {
   }
 
   @Test
-  public void testRBACConfig() throws IOException {
+  public void testRbacConfig() throws IOException {
 
     props.put(ACCESS_CONTROL_IMPLEMENTATION_CLASS, "com.purbon.kafka.topology.roles.RBACProvider");
     props.put(MDS_SERVER, "http://localhost:8090");
@@ -75,7 +75,7 @@ public class AccessControlProviderFactoryTest {
   }
 
   @Test
-  public void testACLsConfig() throws IOException {
+  public void testAclsConfig() throws IOException {
 
     TopologyBuilderConfig config = new TopologyBuilderConfig(cliOps, props);
 

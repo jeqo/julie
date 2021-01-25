@@ -77,7 +77,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newConsumerACLsCreation() {
+  public void newConsumerAclsCreation() {
 
     List<Consumer> consumers = new ArrayList<>();
     consumers.add(new Consumer("User:app1"));
@@ -101,7 +101,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newConsumerOptimisedACLsCreation() {
+  public void newConsumerOptimisedAclsCreation() {
 
     HashMap<String, String> cliOps = new HashMap<>();
     cliOps.put(BROKERS_OPTION, "");
@@ -133,7 +133,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newProducerACLsCreation() {
+  public void newProducerAclsCreation() {
 
     List<Producer> producers = new ArrayList<>();
     producers.add(new Producer("User:app1"));
@@ -157,7 +157,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newProducerOptimizedACLsCreation() {
+  public void newProducerOptimizedAclsCreation() {
 
     HashMap<String, String> cliOps = new HashMap<>();
     cliOps.put(BROKERS_OPTION, "");
@@ -188,7 +188,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newKafkaStreamsAppACLsCreation() {
+  public void newKafkaStreamsAppAclsCreation() {
 
     Project project = new ProjectImpl();
 
@@ -213,7 +213,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newSchemaRegistryACLCreation() {
+  public void newSchemaRegistryAclCreation() {
 
     Project project = new ProjectImpl();
     Topology topology = new TopologyImpl();
@@ -249,7 +249,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newControlCenterACLCreation() {
+  public void newControlCenterAclCreation() {
 
     Project project = new ProjectImpl();
     Topology topology = new TopologyImpl();
@@ -277,7 +277,7 @@ public class RbacProviderTest {
   }
 
   @Test
-  public void newKafkaConnectACLsCreation() {
+  public void newKafkaConnectAclsCreation() {
 
     Project project = new ProjectImpl();
 

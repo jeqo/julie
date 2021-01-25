@@ -25,12 +25,11 @@ public class TopologyBuilderConfig {
   static final String ACCESS_CONTROL_IMPLEMENTATION_CLASS = "topology.builder.access.control.class";
 
   static final String ACCESS_CONTROL_DEFAULT_CLASS =
-      "com.purbon.kafka.topology.roles.SimpleAclsProvider";
+          "com.purbon.kafka.topology.roles.SimpleAclProvider";
 
-  static final String CONFLUENT_CLOUD_CONTROL_CLASS =
-      "com.purbon.kafka.topology.roles.CCloudAclsProvider";
+  static final String CONFLUENT_CLOUD_CONTROL_CLASS = "com.purbon.kafka.topology.roles.CCloudAclProvider";
 
-  static final String RBAC_ACCESS_CONTROL_CLASS = "com.purbon.kafka.topology.roles.RBACProvider";
+  static final String RBAC_ACCESS_CONTROL_CLASS = "com.purbon.kafka.topology.roles.RbacProvider";
 
   private static final String STATE_PROCESSOR_IMPLEMENTATION_CLASS =
       "topology.builder.state.processor.class";

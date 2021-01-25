@@ -26,13 +26,12 @@ public class MdsApiClientRbacIT extends MdsBaseTest {
 
   @Before
   public void before() throws IOException, InterruptedException {
-    super.beforeEach();
     String mdsServer = "http://localhost:8090";
     apiClient = new MdsApiClient(mdsServer);
   }
 
   @Test
-  public void testMDSLogin() throws IOException {
+  public void testMdsLogin() throws IOException {
     apiClient.login(mdsUser, mdsPassword);
     apiClient.authenticate();
     AuthenticationCredentials credentials = apiClient.getCredentials();
@@ -40,7 +39,7 @@ public class MdsApiClientRbacIT extends MdsBaseTest {
   }
 
   @Test(expected = IOException.class)
-  public void testWithWrongMDSLogin() throws IOException {
+  public void testWithWrongMdsLogin() throws IOException {
     apiClient.login("wrong-user", "wrong-password");
     apiClient.authenticate();
   }
