@@ -1,8 +1,8 @@
 package com.purbon.kafka.topology.roles.rbac;
 
-import static com.purbon.kafka.topology.api.mds.ClusterIDs.CONNECT_CLUSTER_ID_LABEL;
+import static com.purbon.kafka.topology.api.mds.ClusterIds.CONNECT_CLUSTER_ID_LABEL;
 
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
 import com.purbon.kafka.topology.api.mds.RequestScope;
 import com.purbon.kafka.topology.model.users.Connector;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
@@ -14,10 +14,10 @@ public class ClusterLevelRoleBuilder {
 
   private final String principal;
   private final String role;
-  private final MDSApiClient client;
+  private final MdsApiClient client;
   private RequestScope scope;
 
-  public ClusterLevelRoleBuilder(String principal, String role, MDSApiClient client) {
+  public ClusterLevelRoleBuilder(String principal, String role, MdsApiClient client) {
     this.principal = principal;
     this.role = role;
     this.client = client;

@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.purbon.kafka.topology.TopologyBuilderConfig;
 import com.purbon.kafka.topology.model.users.KStream;
-import com.purbon.kafka.topology.roles.acls.AclsBindingsBuilder;
+import com.purbon.kafka.topology.roles.acl.AclBindingsBuilder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -16,11 +16,11 @@ import org.junit.Test;
 public class BuildBindingsForKStreamsTest {
 
   private BuildBindingsForKStreams action;
-  private AclsBindingsBuilder aclsBindingsBuilder;
+  private AclBindingsBuilder aclBindingsBuilder;
 
   @Before
   public void setUp() {
-    aclsBindingsBuilder = new AclsBindingsBuilder(new TopologyBuilderConfig());
+    aclBindingsBuilder = new AclBindingsBuilder(new TopologyBuilderConfig());
   }
 
   @Test
@@ -31,7 +31,7 @@ public class BuildBindingsForKStreamsTest {
 
     KStream app = new KStream("User:user", topics);
     String topicPrefix = "topicPrefix";
-    action = new BuildBindingsForKStreams(aclsBindingsBuilder, app, topicPrefix);
+    action = new BuildBindingsForKStreams(aclBindingsBuilder, app, topicPrefix);
     action.execute();
     assertThat(action.getBindings())
         .anyMatch(
@@ -53,7 +53,7 @@ public class BuildBindingsForKStreamsTest {
 
     String applicationId = "applicationId";
     KStream app = new KStream("User:user", topics, Optional.of(applicationId));
-    action = new BuildBindingsForKStreams(aclsBindingsBuilder, app, "topicPrefix");
+    action = new BuildBindingsForKStreams(aclBindingsBuilder, app, "topicPrefix");
     action.execute();
     assertThat(action.getBindings())
         .anyMatch(

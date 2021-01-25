@@ -12,13 +12,13 @@ import org.apache.kafka.common.acl.AclBinding;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class SimpleAclsProvider implements AccessControlProvider {
+public class SimpleAclProvider implements AccessControlProvider {
 
-  private static final Logger LOGGER = LogManager.getLogger(SimpleAclsProvider.class);
+  private static final Logger LOGGER = LogManager.getLogger(SimpleAclProvider.class);
 
   private final TopologyBuilderAdminClient adminClient;
 
-  public SimpleAclsProvider(final TopologyBuilderAdminClient adminClient) {
+  public SimpleAclProvider(final TopologyBuilderAdminClient adminClient) {
     this.adminClient = adminClient;
   }
 

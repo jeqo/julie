@@ -2,8 +2,8 @@ package com.purbon.kafka.topology;
 
 import static com.purbon.kafka.topology.TopologyBuilderConfig.CCLOUD_ENV_CONFIG;
 
-import com.purbon.kafka.topology.serviceAccounts.CCloudPrincipalProvider;
-import com.purbon.kafka.topology.serviceAccounts.VoidPrincipalProvider;
+import com.purbon.kafka.topology.serviceaccounts.CCloudPrincipalProvider;
+import com.purbon.kafka.topology.serviceaccounts.VoidPrincipalProvider;
 
 public class PrincipalProviderFactory {
 

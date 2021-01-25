@@ -1,11 +1,11 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.OPTIMIZED_ACLS_CONFIG;
-import static com.purbon.kafka.topology.roles.rbac.RBACBindingsBuilder.LITERAL;
-import static com.purbon.kafka.topology.roles.rbac.RBACBindingsBuilder.PREFIX;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.DEVELOPER_READ;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.DEVELOPER_WRITE;
+import static com.purbon.kafka.topology.roles.rbac.RbacBindingsBuilder.LITERAL;
+import static com.purbon.kafka.topology.roles.rbac.RbacBindingsBuilder.PREFIX;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.DEVELOPER_READ;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.DEVELOPER_WRITE;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Matchers.eq;
@@ -13,11 +13,11 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
 import com.purbon.kafka.topology.api.mds.RequestScope;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Platform;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
@@ -31,10 +31,10 @@ import com.purbon.kafka.topology.model.users.platform.ControlCenter;
 import com.purbon.kafka.topology.model.users.platform.ControlCenterInstance;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistry;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistryInstance;
-import com.purbon.kafka.topology.roles.RBACProvider;
+import com.purbon.kafka.topology.roles.RbacProvider;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
 import com.purbon.kafka.topology.roles.rbac.ClusterLevelRoleBuilder;
-import com.purbon.kafka.topology.roles.rbac.RBACBindingsBuilder;
+import com.purbon.kafka.topology.roles.rbac.RbacBindingsBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -52,7 +52,8 @@ import org.mockito.junit.MockitoRule;
 
 public class RbacProviderTest {
 
-  @Mock MDSApiClient apiClient;
+  @Mock
+  MdsApiClient apiClient;
 
   @Mock ExecutionPlan plan;
 
@@ -61,8 +62,8 @@ public class RbacProviderTest {
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 
   private AccessControlManager accessControlManager;
-  private RBACProvider aclsProvider;
-  private RBACBindingsBuilder bindingsBuilder;
+  private RbacProvider aclsProvider;
+  private RbacBindingsBuilder bindingsBuilder;
 
   @Before
   public void setup() {
@@ -70,8 +71,8 @@ public class RbacProviderTest {
     apiClient.setSchemaRegistryClusterID("sr");
     apiClient.setKafkaClusterId("ak");
 
-    aclsProvider = new RBACProvider(apiClient);
-    bindingsBuilder = new RBACBindingsBuilder(apiClient);
+    aclsProvider = new RbacProvider(apiClient);
+    bindingsBuilder = new RbacBindingsBuilder(apiClient);
     accessControlManager = new AccessControlManager(aclsProvider, bindingsBuilder);
   }
 

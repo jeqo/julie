@@ -1,18 +1,18 @@
 package com.purbon.kafka.topology.integration;
 
-import com.purbon.kafka.topology.utils.JSON;
-import com.purbon.kafka.topology.utils.ZKClient;
+import com.purbon.kafka.topology.utils.Json;
+import com.purbon.kafka.topology.utils.ZkClient;
 import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class MDSBaseTest {
+public class MdsBaseTest {
 
-  private static final Logger LOGGER = LogManager.getLogger(MDSBaseTest.class);
-  private ZKClient zkClient;
+  private static final Logger LOGGER = LogManager.getLogger(MdsBaseTest.class);
+  private ZkClient zkClient;
 
   public void beforeEach() throws IOException, InterruptedException {
-    zkClient = new ZKClient();
+    zkClient = new ZkClient();
     zkClient.connect("localhost");
   }
 
@@ -20,7 +20,7 @@ public class MDSBaseTest {
 
     try {
       String nodeData = zkClient.getNodeData("/cluster/id");
-      return JSON.toMap(nodeData).get("id").toString();
+      return Json.toMap(nodeData).get("id").toString();
     } catch (IOException e) {
       LOGGER.error(e);
     }

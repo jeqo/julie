@@ -7,13 +7,13 @@ import static com.purbon.kafka.topology.TopologyBuilderConfig.STATE_PROCESSOR_DE
 
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClientBuilder;
-import com.purbon.kafka.topology.api.mds.MDSApiClientBuilder;
+import com.purbon.kafka.topology.api.mds.MdsApiClientBuilder;
 import com.purbon.kafka.topology.backend.FileBackend;
 import com.purbon.kafka.topology.backend.RedisBackend;
 import com.purbon.kafka.topology.exceptions.ValidationException;
 import com.purbon.kafka.topology.model.Topology;
 import com.purbon.kafka.topology.schemas.SchemaRegistryManager;
-import com.purbon.kafka.topology.serviceAccounts.VoidPrincipalProvider;
+import com.purbon.kafka.topology.serviceaccounts.VoidPrincipalProvider;
 import io.confluent.kafka.schemaregistry.client.CachedSchemaRegistryClient;
 import io.confluent.kafka.schemaregistry.client.SchemaRegistryClient;
 import io.confluent.kafka.schemaregistry.client.rest.RestService;
@@ -66,7 +66,7 @@ public class KafkaTopologyBuilder implements AutoCloseable {
         new TopologyBuilderAdminClientBuilder(builderConfig).build();
     AccessControlProviderFactory factory =
         new AccessControlProviderFactory(
-            builderConfig, adminClient, new MDSApiClientBuilder(builderConfig));
+            builderConfig, adminClient, new MdsApiClientBuilder(builderConfig));
 
     PrincipalProviderFactory principalProviderFactory = new PrincipalProviderFactory(builderConfig);
 
@@ -151,7 +151,7 @@ public class KafkaTopologyBuilder implements AutoCloseable {
       throw new IOException("Topology file does not exist");
     }
 
-    String configFilePath = config.get(BuilderCLI.ADMIN_CLIENT_CONFIG_OPTION);
+    String configFilePath = config.get(BuilderCli.ADMIN_CLIENT_CONFIG_OPTION);
 
     if (!Files.exists(Paths.get(configFilePath))) {
       throw new IOException("AdminClient config file does not exist");

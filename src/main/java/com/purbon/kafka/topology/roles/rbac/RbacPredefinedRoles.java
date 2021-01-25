@@ -1,6 +1,6 @@
 package com.purbon.kafka.topology.roles.rbac;
 
-public class RBACPredefinedRoles {
+public class RbacPredefinedRoles {
 
   public static final String DEVELOPER_READ = "DeveloperRead";
   public static final String DEVELOPER_WRITE = "DeveloperWrite";

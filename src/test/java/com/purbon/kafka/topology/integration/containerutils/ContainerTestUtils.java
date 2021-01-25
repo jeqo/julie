@@ -5,8 +5,8 @@ import com.purbon.kafka.topology.BindingsBuilderProvider;
 import com.purbon.kafka.topology.KafkaTopologyBuilder;
 import com.purbon.kafka.topology.TopologyBuilderConfig;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
-import com.purbon.kafka.topology.roles.SimpleAclsProvider;
-import com.purbon.kafka.topology.roles.acls.AclsBindingsBuilder;
+import com.purbon.kafka.topology.roles.SimpleAclProvider;
+import com.purbon.kafka.topology.roles.acl.AclBindingsBuilder;
 import com.purbon.kafka.topology.utils.TestUtils;
 import com.typesafe.config.ConfigFactory;
 import java.io.IOException;
@@ -88,8 +88,8 @@ public final class ContainerTestUtils {
         TopologyBuilderConfig.build(cliParams, TestUtils.getResourceFilename(configResource));
     final TopologyBuilderAdminClient topologyAdminClient =
         new TopologyBuilderAdminClient(kafkaAdminClient);
-    final AccessControlProvider accessControlProvider = new SimpleAclsProvider(topologyAdminClient);
-    final BindingsBuilderProvider bindingsBuilderProvider = new AclsBindingsBuilder(builderConfig);
+    final AccessControlProvider accessControlProvider = new SimpleAclProvider(topologyAdminClient);
+    final BindingsBuilderProvider bindingsBuilderProvider = new AclBindingsBuilder(builderConfig);
     try {
       return KafkaTopologyBuilder.build(
           fileOrDirPath,

@@ -1,19 +1,19 @@
 package com.purbon.kafka.topology.roles;
 
 import com.purbon.kafka.topology.AccessControlProvider;
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
 import com.purbon.kafka.topology.api.mds.RequestScope;
 import java.io.IOException;
 import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class RBACProvider implements AccessControlProvider {
+public class RbacProvider implements AccessControlProvider {
 
-  private static final Logger LOGGER = LogManager.getLogger(RBACProvider.class);
-  private final MDSApiClient apiClient;
+  private static final Logger LOGGER = LogManager.getLogger(RbacProvider.class);
+  private final MdsApiClient apiClient;
 
-  public RBACProvider(MDSApiClient apiClient) {
+  public RbacProvider(MdsApiClient apiClient) {
     this.apiClient = apiClient;
   }
 

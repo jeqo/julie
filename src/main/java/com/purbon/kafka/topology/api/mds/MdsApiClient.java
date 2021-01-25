@@ -7,7 +7,7 @@ import static com.purbon.kafka.topology.api.mds.RequestScope.RESOURCE_TYPE;
 import com.purbon.kafka.topology.api.mds.http.HttpDeleteWithBody;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
 import com.purbon.kafka.topology.roles.rbac.ClusterLevelRoleBuilder;
-import com.purbon.kafka.topology.utils.JSON;
+import com.purbon.kafka.topology.utils.Json;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -25,19 +25,19 @@ import org.apache.kafka.common.resource.ResourceType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class MDSApiClient {
+public class MdsApiClient {
 
-  private static final Logger LOGGER = LogManager.getLogger(MDSApiClient.class);
+  private static final Logger LOGGER = LogManager.getLogger(MdsApiClient.class);
 
   private final String mdsServer;
   private String basicCredentials;
 
   private AuthenticationCredentials authenticationCredentials;
-  private ClusterIDs clusterIDs;
+  private ClusterIds clusterIDs;
 
-  public MDSApiClient(String mdsServer) {
+  public MdsApiClient(String mdsServer) {
     this.mdsServer = mdsServer;
-    this.clusterIDs = new ClusterIDs();
+    this.clusterIDs = new ClusterIds();
   }
 
   public void login(String user, String password) {
@@ -194,10 +194,10 @@ public class MDSApiClient {
     List<String> roles = new ArrayList<>();
 
     try {
-      postRequest.setEntity(new StringEntity(JSON.asString(clusters)));
+      postRequest.setEntity(new StringEntity(Json.asString(clusters)));
       String stringResponse = post(postRequest);
       if (!stringResponse.isEmpty()) {
-        roles = JSON.toArray(stringResponse);
+        roles = Json.toArray(stringResponse);
       }
     } catch (IOException e) {
       LOGGER.error(e);
@@ -275,7 +275,7 @@ public class MDSApiClient {
    *
    * @return ClusterIDs
    */
-  public ClusterIDs withClusterIDs() {
+  public ClusterIds withClusterIDs() {
     try {
       return clusterIDs.clone().clear();
     } catch (CloneNotSupportedException e) {

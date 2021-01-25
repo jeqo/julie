@@ -7,7 +7,7 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooKeeper;
 
-public class ZKConnection {
+public class ZkConnection {
   private ZooKeeper zoo;
   CountDownLatch connectionLatch = new CountDownLatch(1);
 

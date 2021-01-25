@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology.integration;
 
-import static com.purbon.kafka.topology.BuilderCLI.ALLOW_DELETE_OPTION;
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.ALLOW_DELETE_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.TOPOLOGY_TOPIC_STATE_FROM_CLUSTER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -14,9 +14,9 @@ import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
 import com.purbon.kafka.topology.integration.containerutils.ContainerFactory;
 import com.purbon.kafka.topology.integration.containerutils.ContainerTestUtils;
 import com.purbon.kafka.topology.integration.containerutils.SaslPlaintextKafkaContainer;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
 import com.purbon.kafka.topology.model.Topology;

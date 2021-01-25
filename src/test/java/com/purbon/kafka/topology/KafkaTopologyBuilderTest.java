@@ -1,6 +1,6 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.BuilderCLI.*;
+import static com.purbon.kafka.topology.BuilderCli.*;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.CONFLUENT_SCHEMA_REGISTRY_URL_CONFIG;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;

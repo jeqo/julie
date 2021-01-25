@@ -1,6 +1,6 @@
 package com.purbon.kafka.topology.integration;
 
-import static com.purbon.kafka.topology.BuilderCLI.*;
+import static com.purbon.kafka.topology.BuilderCli.*;
 
 import com.purbon.kafka.topology.KafkaTopologyBuilder;
 import com.purbon.kafka.topology.integration.containerutils.ContainerFactory;

@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology.api.mds;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.purbon.kafka.topology.utils.JSON;
+import com.purbon.kafka.topology.utils.Json;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -47,7 +47,7 @@ public class RequestScope {
 
   public String clustersAsJson() {
     try {
-      return JSON.asString(clusters);
+      return Json.asString(clusters);
     } catch (JsonProcessingException e) {
       e.printStackTrace();
       return "";
@@ -56,7 +56,7 @@ public class RequestScope {
 
   public String asJson() {
     try {
-      return JSON.asString(scope);
+      return Json.asString(scope);
     } catch (JsonProcessingException e) {
       e.printStackTrace();
       return "";

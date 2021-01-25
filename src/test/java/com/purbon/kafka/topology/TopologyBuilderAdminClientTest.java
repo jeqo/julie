@@ -7,9 +7,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Platform;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
@@ -23,8 +23,8 @@ import com.purbon.kafka.topology.model.users.platform.ControlCenter;
 import com.purbon.kafka.topology.model.users.platform.ControlCenterInstance;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistry;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistryInstance;
-import com.purbon.kafka.topology.roles.SimpleAclsProvider;
-import com.purbon.kafka.topology.roles.acls.AclsBindingsBuilder;
+import com.purbon.kafka.topology.roles.SimpleAclProvider;
+import com.purbon.kafka.topology.roles.acl.AclBindingsBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,8 +54,8 @@ public class TopologyBuilderAdminClientTest {
 
   TopologyBuilderAdminClient adminClient;
 
-  private SimpleAclsProvider aclsProvider;
-  private AclsBindingsBuilder bindingsBuilder;
+  private SimpleAclProvider aclsProvider;
+  private AclBindingsBuilder bindingsBuilder;
   private ExecutionPlan plan;
 
   @Mock BackendController backendController;
@@ -67,8 +67,8 @@ public class TopologyBuilderAdminClientTest {
   @Before
   public void setup() throws ExecutionException, InterruptedException, IOException {
     adminClient = new TopologyBuilderAdminClient(kafkaAdminClient);
-    aclsProvider = new SimpleAclsProvider(adminClient);
-    bindingsBuilder = new AclsBindingsBuilder(config);
+    aclsProvider = new SimpleAclProvider(adminClient);
+    bindingsBuilder = new AclBindingsBuilder(config);
     accessControlManager = new AccessControlManager(aclsProvider, bindingsBuilder);
 
     plan = ExecutionPlan.init(backendController, System.out);

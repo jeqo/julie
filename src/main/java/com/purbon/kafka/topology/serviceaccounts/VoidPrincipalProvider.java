@@ -1,4 +1,4 @@
-package com.purbon.kafka.topology.serviceAccounts;
+package com.purbon.kafka.topology.serviceaccounts;
 
 import com.purbon.kafka.topology.PrincipalProvider;
 import com.purbon.kafka.topology.model.cluster.ServiceAccount;

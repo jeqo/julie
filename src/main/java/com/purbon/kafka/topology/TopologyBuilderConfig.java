@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.BuilderCLI.ADMIN_CLIENT_CONFIG_OPTION;
-import static com.purbon.kafka.topology.BuilderCLI.DRY_RUN_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.ADMIN_CLIENT_CONFIG_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.DRY_RUN_OPTION;
 
 import com.purbon.kafka.topology.exceptions.ConfigurationException;
 import com.purbon.kafka.topology.model.Project;
@@ -137,9 +137,9 @@ public class TopologyBuilderConfig {
   public Properties asProperties() {
     Properties props = new Properties();
     config.entrySet().forEach(entry -> props.put(entry.getKey(), entry.getValue().unwrapped()));
-    if (cliParams.get(BuilderCLI.BROKERS_OPTION) != null) {
+    if (cliParams.get(BuilderCli.BROKERS_OPTION) != null) {
       props.put(
-          AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, cliParams.get(BuilderCLI.BROKERS_OPTION));
+          AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, cliParams.get(BuilderCli.BROKERS_OPTION));
     }
     props.put(AdminClientConfig.RETRIES_CONFIG, Integer.MAX_VALUE);
     return props;
@@ -204,11 +204,11 @@ public class TopologyBuilderConfig {
       existServersAsConfig = false;
     }
 
-    if (cliParams.get(BuilderCLI.BROKERS_OPTION) == null && !existServersAsConfig) {
+    if (cliParams.get(BuilderCli.BROKERS_OPTION) == null && !existServersAsConfig) {
       String msg =
           String.format(
               "Either the CLI option %s or the configuration %s should be specified",
-              BuilderCLI.BROKERS_OPTION, AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG);
+              BuilderCli.BROKERS_OPTION, AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG);
       throw new ConfigurationException(msg);
     }
   }
@@ -330,11 +330,11 @@ public class TopologyBuilderConfig {
   }
 
   public boolean allowDelete() {
-    return Boolean.parseBoolean(cliParams.getOrDefault(BuilderCLI.ALLOW_DELETE_OPTION, "false"));
+    return Boolean.parseBoolean(cliParams.getOrDefault(BuilderCli.ALLOW_DELETE_OPTION, "false"));
   }
 
   public boolean isQuiet() {
-    return Boolean.parseBoolean(cliParams.getOrDefault(BuilderCLI.QUIET_OPTION, "false"));
+    return Boolean.parseBoolean(cliParams.getOrDefault(BuilderCli.QUIET_OPTION, "false"));
   }
 
   public boolean isDryRun() {

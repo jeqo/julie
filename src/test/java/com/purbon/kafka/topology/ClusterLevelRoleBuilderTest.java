@@ -1,15 +1,15 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.api.mds.ClusterIDs.CONNECT_CLUSTER_ID_LABEL;
-import static com.purbon.kafka.topology.api.mds.ClusterIDs.KAFKA_CLUSTER_ID_LABEL;
-import static com.purbon.kafka.topology.api.mds.ClusterIDs.SCHEMA_REGISTRY_CLUSTER_ID_LABEL;
+import static com.purbon.kafka.topology.api.mds.ClusterIds.CONNECT_CLUSTER_ID_LABEL;
+import static com.purbon.kafka.topology.api.mds.ClusterIds.KAFKA_CLUSTER_ID_LABEL;
+import static com.purbon.kafka.topology.api.mds.ClusterIds.SCHEMA_REGISTRY_CLUSTER_ID_LABEL;
 import static com.purbon.kafka.topology.api.mds.RequestScope.RESOURCE_NAME;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.SECURITY_ADMIN;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.SECURITY_ADMIN;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-import com.purbon.kafka.topology.api.mds.ClusterIDs;
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
+import com.purbon.kafka.topology.api.mds.ClusterIds;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
 import com.purbon.kafka.topology.model.users.Connector;
 import com.purbon.kafka.topology.roles.rbac.ClusterLevelRoleBuilder;
 import java.util.Map;
@@ -23,24 +23,25 @@ import org.mockito.junit.MockitoRule;
 
 public class ClusterLevelRoleBuilderTest {
 
-  @Mock MDSApiClient apiClient;
+  @Mock
+  MdsApiClient apiClient;
 
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 
   private Connector connector;
 
-  private static ClusterIDs allClusterIDs;
-  private static ClusterIDs nonClusterIDs;
+  private static ClusterIds allClusterIds;
+  private static ClusterIds nonClusterIds;
 
   @BeforeClass
   public static void beforeClass() {
 
-    allClusterIDs = new ClusterIDs();
-    nonClusterIDs = new ClusterIDs();
+    allClusterIds = new ClusterIds();
+    nonClusterIds = new ClusterIds();
 
-    allClusterIDs.setConnectClusterID("1234");
-    allClusterIDs.setSchemaRegistryClusterID("4321");
-    allClusterIDs.setKafkaClusterId("abcd");
+    allClusterIds.setConnectClusterID("1234");
+    allClusterIds.setSchemaRegistryClusterID("4321");
+    allClusterIds.setKafkaClusterId("abcd");
   }
 
   @Before
@@ -50,7 +51,7 @@ public class ClusterLevelRoleBuilderTest {
 
   @Test
   public void testWithAllClientIdsForConnect() {
-    when(apiClient.withClusterIDs()).thenReturn(allClusterIDs);
+    when(apiClient.withClusterIDs()).thenReturn(allClusterIds);
 
     ClusterLevelRoleBuilder runner = new ClusterLevelRoleBuilder("foo", SECURITY_ADMIN, apiClient);
     runner.forKafkaConnect(connector);
@@ -64,7 +65,7 @@ public class ClusterLevelRoleBuilderTest {
 
   @Test
   public void testWithAllClientIdsForSchemaRegistry() {
-    when(apiClient.withClusterIDs()).thenReturn(allClusterIDs);
+    when(apiClient.withClusterIDs()).thenReturn(allClusterIds);
 
     ClusterLevelRoleBuilder runner = new ClusterLevelRoleBuilder("foo", SECURITY_ADMIN, apiClient);
     runner.forSchemaRegistry();
@@ -76,7 +77,7 @@ public class ClusterLevelRoleBuilderTest {
 
   @Test
   public void testKafkaRun() {
-    when(apiClient.withClusterIDs()).thenReturn(allClusterIDs);
+    when(apiClient.withClusterIDs()).thenReturn(allClusterIds);
 
     ClusterLevelRoleBuilder runner = new ClusterLevelRoleBuilder("foo", SECURITY_ADMIN, apiClient);
     runner.forKafka();
@@ -88,7 +89,7 @@ public class ClusterLevelRoleBuilderTest {
 
   @Test
   public void testControlCenterRun() {
-    when(apiClient.withClusterIDs()).thenReturn(allClusterIDs);
+    when(apiClient.withClusterIDs()).thenReturn(allClusterIds);
 
     ClusterLevelRoleBuilder runner = new ClusterLevelRoleBuilder("foo", SECURITY_ADMIN, apiClient);
     runner.forControlCenter();
@@ -100,7 +101,7 @@ public class ClusterLevelRoleBuilderTest {
 
   @Test
   public void testKafkaConnectRun() {
-    when(apiClient.withClusterIDs()).thenReturn(allClusterIDs);
+    when(apiClient.withClusterIDs()).thenReturn(allClusterIds);
 
     ClusterLevelRoleBuilder runner = new ClusterLevelRoleBuilder("foo", SECURITY_ADMIN, apiClient);
     runner.forKafkaConnect();
@@ -112,7 +113,7 @@ public class ClusterLevelRoleBuilderTest {
 
   @Test
   public void testSchemaRegistryRun() {
-    when(apiClient.withClusterIDs()).thenReturn(allClusterIDs);
+    when(apiClient.withClusterIDs()).thenReturn(allClusterIds);
 
     ClusterLevelRoleBuilder runner = new ClusterLevelRoleBuilder("foo", SECURITY_ADMIN, apiClient);
     runner.forSchemaSubject("foo");

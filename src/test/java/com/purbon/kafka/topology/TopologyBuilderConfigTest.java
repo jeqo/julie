@@ -1,14 +1,14 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.BuilderCLI.ADMIN_CLIENT_CONFIG_OPTION;
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.ADMIN_CLIENT_CONFIG_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.purbon.kafka.topology.exceptions.ConfigurationException;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
 import com.purbon.kafka.topology.model.TopicSchemas;

@@ -1,13 +1,13 @@
 package com.purbon.kafka.topology.roles.rbac;
 
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.DEVELOPER_READ;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.DEVELOPER_WRITE;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.RESOURCE_OWNER;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.SECURITY_ADMIN;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.SYSTEM_ADMIN;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.DEVELOPER_READ;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.DEVELOPER_WRITE;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.RESOURCE_OWNER;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.SECURITY_ADMIN;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.SYSTEM_ADMIN;
 
 import com.purbon.kafka.topology.BindingsBuilderProvider;
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
 import com.purbon.kafka.topology.model.Component;
 import com.purbon.kafka.topology.model.users.Connector;
 import com.purbon.kafka.topology.model.users.Consumer;
@@ -23,14 +23,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class RBACBindingsBuilder implements BindingsBuilderProvider {
+public class RbacBindingsBuilder implements BindingsBuilderProvider {
 
   public static final String LITERAL = "LITERAL";
   public static final String PREFIX = "PREFIXED";
 
-  private final MDSApiClient apiClient;
+  private final MdsApiClient apiClient;
 
-  public RBACBindingsBuilder(MDSApiClient apiClient) {
+  public RbacBindingsBuilder(MdsApiClient apiClient) {
     this.apiClient = apiClient;
   }
 

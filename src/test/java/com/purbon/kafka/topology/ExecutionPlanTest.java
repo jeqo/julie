@@ -10,13 +10,13 @@ import com.purbon.kafka.topology.actions.access.CreateBindings;
 import com.purbon.kafka.topology.actions.topics.DeleteTopics;
 import com.purbon.kafka.topology.actions.topics.SyncTopicAction;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
 import com.purbon.kafka.topology.model.Topology;
-import com.purbon.kafka.topology.roles.SimpleAclsProvider;
+import com.purbon.kafka.topology.roles.SimpleAclProvider;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
 import com.purbon.kafka.topology.schemas.SchemaRegistryManager;
 import com.purbon.kafka.topology.utils.TestUtils;
@@ -40,7 +40,8 @@ public class ExecutionPlanTest {
 
   @Mock PrintStream mockPrintStream;
 
-  @Mock SimpleAclsProvider aclsProvider;
+  @Mock
+  SimpleAclProvider aclsProvider;
 
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 

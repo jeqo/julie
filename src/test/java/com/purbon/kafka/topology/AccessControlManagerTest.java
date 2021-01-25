@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.*;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -17,17 +17,17 @@ import static org.mockito.Mockito.*;
 import com.purbon.kafka.topology.actions.Action;
 import com.purbon.kafka.topology.api.adminclient.AclBuilder;
 import com.purbon.kafka.topology.model.*;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.users.Connector;
 import com.purbon.kafka.topology.model.users.Consumer;
 import com.purbon.kafka.topology.model.users.KStream;
 import com.purbon.kafka.topology.model.users.Producer;
 import com.purbon.kafka.topology.model.users.platform.*;
-import com.purbon.kafka.topology.roles.SimpleAclsProvider;
+import com.purbon.kafka.topology.roles.SimpleAclProvider;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
-import com.purbon.kafka.topology.roles.acls.AclsBindingsBuilder;
+import com.purbon.kafka.topology.roles.acl.AclBindingsBuilder;
 import com.purbon.kafka.topology.utils.TestUtils;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -50,8 +50,10 @@ import org.mockito.junit.MockitoRule;
 
 public class AccessControlManagerTest {
 
-  @Mock SimpleAclsProvider aclsProvider;
-  @Mock AclsBindingsBuilder aclsBuilder;
+  @Mock
+  SimpleAclProvider aclsProvider;
+  @Mock
+  AclBindingsBuilder aclsBuilder;
 
   @Mock BackendController backendController;
 
@@ -402,7 +404,7 @@ public class AccessControlManagerTest {
   public void testDryRunMode() throws IOException {
     plan = ExecutionPlan.init(backendController, mockPrintStream);
     accessControlManager =
-        new AccessControlManager(aclsProvider, new AclsBindingsBuilder(config), config);
+        new AccessControlManager(aclsProvider, new AclBindingsBuilder(config), config);
 
     Topic topicA = new TopicImpl("topicA");
     TestTopologyBuilder builder =
@@ -456,7 +458,7 @@ public class AccessControlManagerTest {
     BackendController backendController = initializeFileBackendController();
     plan = ExecutionPlan.init(backendController, mockPrintStream);
     accessControlManager =
-        new AccessControlManager(aclsProvider, new AclsBindingsBuilder(config), config);
+        new AccessControlManager(aclsProvider, new AclBindingsBuilder(config), config);
 
     TestTopologyBuilder builder =
         TestTopologyBuilder.createProject()
@@ -483,7 +485,7 @@ public class AccessControlManagerTest {
     BackendController backendController = initializeFileBackendController();
     plan = ExecutionPlan.init(backendController, mockPrintStream);
     accessControlManager =
-        new AccessControlManager(aclsProvider, new AclsBindingsBuilder(config), config);
+        new AccessControlManager(aclsProvider, new AclBindingsBuilder(config), config);
 
     TestTopologyBuilder builder =
         TestTopologyBuilder.createProject()
@@ -569,7 +571,7 @@ public class AccessControlManagerTest {
 
     TopologyBuilderConfig config = new TopologyBuilderConfig(cliOps, props);
     accessControlManager =
-        new AccessControlManager(aclsProvider, new AclsBindingsBuilder(config), config);
+        new AccessControlManager(aclsProvider, new AclBindingsBuilder(config), config);
 
     TestTopologyBuilder builder =
         TestTopologyBuilder.createProject(config)
@@ -611,7 +613,7 @@ public class AccessControlManagerTest {
 
     TopologyBuilderConfig config = new TopologyBuilderConfig(cliOps, props);
     accessControlManager =
-        new AccessControlManager(aclsProvider, new AclsBindingsBuilder(config), config);
+        new AccessControlManager(aclsProvider, new AclBindingsBuilder(config), config);
 
     TestTopologyBuilder builder =
         TestTopologyBuilder.createProject(config)
@@ -662,7 +664,7 @@ public class AccessControlManagerTest {
 
     TopologyBuilderConfig config = new TopologyBuilderConfig(cliOps, props);
     accessControlManager =
-        new AccessControlManager(aclsProvider, new AclsBindingsBuilder(config), config);
+        new AccessControlManager(aclsProvider, new AclBindingsBuilder(config), config);
 
     TestTopologyBuilder builder =
         TestTopologyBuilder.createProject(config)

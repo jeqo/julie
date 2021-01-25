@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology.integration;
 
-import static com.purbon.kafka.topology.BuilderCLI.ALLOW_DELETE_OPTION;
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.ALLOW_DELETE_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -13,9 +13,9 @@ import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
 import com.purbon.kafka.topology.integration.containerutils.ContainerFactory;
 import com.purbon.kafka.topology.integration.containerutils.ContainerTestUtils;
 import com.purbon.kafka.topology.integration.containerutils.SaslPlaintextKafkaContainer;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Platform;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
@@ -28,9 +28,9 @@ import com.purbon.kafka.topology.model.users.platform.ControlCenter;
 import com.purbon.kafka.topology.model.users.platform.ControlCenterInstance;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistry;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistryInstance;
-import com.purbon.kafka.topology.roles.SimpleAclsProvider;
+import com.purbon.kafka.topology.roles.SimpleAclProvider;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
-import com.purbon.kafka.topology.roles.acls.AclsBindingsBuilder;
+import com.purbon.kafka.topology.roles.acl.AclBindingsBuilder;
 import com.purbon.kafka.topology.utils.TestUtils;
 import java.io.IOException;
 import java.util.*;
@@ -51,8 +51,8 @@ public class AccessControlManagerIT {
   private static SaslPlaintextKafkaContainer container;
   private static AdminClient kafkaAdminClient;
   private AccessControlManager accessControlManager;
-  private SimpleAclsProvider aclsProvider;
-  private AclsBindingsBuilder bindingsBuilder;
+  private SimpleAclProvider aclsProvider;
+  private AclBindingsBuilder bindingsBuilder;
 
   private ExecutionPlan plan;
   private BackendController cs;
@@ -81,8 +81,8 @@ public class AccessControlManagerIT {
     this.cs = new BackendController();
     this.plan = ExecutionPlan.init(cs, System.out);
 
-    aclsProvider = new SimpleAclsProvider(adminClient);
-    bindingsBuilder = new AclsBindingsBuilder(config);
+    aclsProvider = new SimpleAclProvider(adminClient);
+    bindingsBuilder = new AclBindingsBuilder(config);
     accessControlManager = new AccessControlManager(aclsProvider, bindingsBuilder);
   }
 

@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.BuilderCLI.ALLOW_DELETE_OPTION;
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.ALLOW_DELETE_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.SERVICE_ACCOUNT_MANAGED_PREFIXES;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.TOPOLOGY_EXPERIMENTAL_ENABLED_CONFIG;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.TOPOLOGY_STATE_FROM_CLUSTER;
@@ -16,9 +16,9 @@ import static org.mockito.Mockito.verify;
 import com.purbon.kafka.topology.actions.Action;
 import com.purbon.kafka.topology.actions.accounts.ClearAccounts;
 import com.purbon.kafka.topology.actions.accounts.CreateAccounts;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
 import com.purbon.kafka.topology.model.Topology;

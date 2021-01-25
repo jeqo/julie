@@ -7,7 +7,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.purbon.kafka.topology.TopologyBuilderConfig;
 import com.purbon.kafka.topology.exceptions.TopologyParsingException;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
 import com.purbon.kafka.topology.model.PlanMap;
 import com.purbon.kafka.topology.model.Topology;
 import java.io.File;

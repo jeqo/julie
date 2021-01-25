@@ -6,7 +6,7 @@ import com.purbon.kafka.topology.model.Topic;
 import com.purbon.kafka.topology.model.Topology;
 import com.purbon.kafka.topology.model.User;
 import com.purbon.kafka.topology.model.cluster.ServiceAccount;
-import com.purbon.kafka.topology.serviceAccounts.VoidPrincipalProvider;
+import com.purbon.kafka.topology.serviceaccounts.VoidPrincipalProvider;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;

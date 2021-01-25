@@ -1,11 +1,11 @@
-package com.purbon.kafka.topology.roles.acls;
+package com.purbon.kafka.topology.roles.acl;
 
 import static java.util.Arrays.asList;
 
 import com.purbon.kafka.topology.BindingsBuilderProvider;
 import com.purbon.kafka.topology.TopologyBuilderConfig;
 import com.purbon.kafka.topology.api.adminclient.AclBuilder;
-import com.purbon.kafka.topology.api.ccloud.CCloudCLI;
+import com.purbon.kafka.topology.api.ccloud.CCloudCli;
 import com.purbon.kafka.topology.model.users.Connector;
 import com.purbon.kafka.topology.model.users.Consumer;
 import com.purbon.kafka.topology.model.users.Producer;
@@ -29,18 +29,18 @@ import org.apache.kafka.common.resource.ResourceType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class AclsBindingsBuilder implements BindingsBuilderProvider {
+public class AclBindingsBuilder implements BindingsBuilderProvider {
 
-  private static final Logger LOGGER = LogManager.getLogger(AclsBindingsBuilder.class);
+  private static final Logger LOGGER = LogManager.getLogger(AclBindingsBuilder.class);
 
   private final TopologyBuilderConfig config;
   private final CCloudUtils cCloudUtils;
 
-  public AclsBindingsBuilder(TopologyBuilderConfig config) {
-    this(config, new CCloudUtils(new CCloudCLI(), config));
+  public AclBindingsBuilder(TopologyBuilderConfig config) {
+    this(config, new CCloudUtils(new CCloudCli(), config));
   }
 
-  public AclsBindingsBuilder(TopologyBuilderConfig config, CCloudUtils cCloudUtils) {
+  public AclBindingsBuilder(TopologyBuilderConfig config, CCloudUtils cCloudUtils) {
     this.config = config;
     this.cCloudUtils = cCloudUtils;
   }

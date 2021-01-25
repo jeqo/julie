@@ -1,6 +1,6 @@
 package com.purbon.kafka.topology;
 
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.ACCESS_CONTROL_IMPLEMENTATION_CLASS;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.MDS_KAFKA_CLUSTER_ID_CONFIG;
 import static com.purbon.kafka.topology.TopologyBuilderConfig.MDS_PASSWORD_CONFIG;
@@ -13,10 +13,10 @@ import static org.mockito.Mockito.when;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
-import com.purbon.kafka.topology.api.mds.MDSApiClientBuilder;
-import com.purbon.kafka.topology.roles.RBACProvider;
-import com.purbon.kafka.topology.roles.SimpleAclsProvider;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
+import com.purbon.kafka.topology.api.mds.MdsApiClientBuilder;
+import com.purbon.kafka.topology.roles.RbacProvider;
+import com.purbon.kafka.topology.roles.SimpleAclProvider;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,9 +32,11 @@ public class AccessControlProviderFactoryTest {
 
   @Mock TopologyBuilderAdminClient adminClient;
 
-  @Mock MDSApiClientBuilder mdsApiClientBuilder;
+  @Mock
+  MdsApiClientBuilder mdsApiClientBuilder;
 
-  @Mock MDSApiClient mdsApiClient;
+  @Mock
+  MdsApiClient mdsApiClient;
 
   @Rule public MockitoRule mockitoRule = MockitoJUnit.rule();
 
@@ -69,7 +71,7 @@ public class AccessControlProviderFactoryTest {
     verify(mdsApiClient, times(1)).login("alice", "alice-secret");
     verify(mdsApiClient, times(1)).authenticate();
 
-    assertThat(provider, instanceOf(RBACProvider.class));
+    assertThat(provider, instanceOf(RbacProvider.class));
   }
 
   @Test
@@ -80,7 +82,7 @@ public class AccessControlProviderFactoryTest {
     AccessControlProviderFactory factory =
         new AccessControlProviderFactory(config, adminClient, mdsApiClientBuilder);
 
-    assertThat(factory.get(), instanceOf(SimpleAclsProvider.class));
+    assertThat(factory.get(), instanceOf(SimpleAclProvider.class));
   }
 
   @Test(expected = IOException.class)

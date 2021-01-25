@@ -3,7 +3,7 @@ package com.purbon.kafka.topology.roles;
 import com.purbon.kafka.topology.AccessControlProvider;
 import com.purbon.kafka.topology.TopologyBuilderConfig;
 import com.purbon.kafka.topology.api.adminclient.TopologyBuilderAdminClient;
-import com.purbon.kafka.topology.api.ccloud.CCloudCLI;
+import com.purbon.kafka.topology.api.ccloud.CCloudCli;
 import com.purbon.kafka.topology.model.cluster.ServiceAccount;
 import java.io.IOException;
 import java.util.*;
@@ -13,17 +13,17 @@ import org.apache.kafka.common.acl.AclBinding;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class CCloudAclsProvider extends SimpleAclsProvider implements AccessControlProvider {
+public class CCloudAclProvider extends SimpleAclProvider implements AccessControlProvider {
 
-  private static final Logger LOGGER = LogManager.getLogger(CCloudAclsProvider.class);
+  private static final Logger LOGGER = LogManager.getLogger(CCloudAclProvider.class);
 
-  private final CCloudCLI cli;
+  private final CCloudCli cli;
 
-  public CCloudAclsProvider(
+  public CCloudAclProvider(
       final TopologyBuilderAdminClient adminClient, final TopologyBuilderConfig config)
       throws IOException {
     super(adminClient);
-    this.cli = new CCloudCLI();
+    this.cli = new CCloudCli();
     this.cli.setEnvironment(config.getConfluentCloudEnv());
   }
 

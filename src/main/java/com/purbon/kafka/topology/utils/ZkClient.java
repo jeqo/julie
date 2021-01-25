@@ -5,15 +5,15 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.zookeeper.ZooKeeper;
 
-public class ZKClient {
+public class ZkClient {
 
-  private static final Logger LOGGER = LogManager.getLogger(ZKClient.class);
+  private static final Logger LOGGER = LogManager.getLogger(ZkClient.class);
 
-  private ZKConnection connection;
+  private ZkConnection connection;
   private ZooKeeper zkClient;
 
-  public ZKClient() {
-    connection = new ZKConnection();
+  public ZkClient() {
+    connection = new ZkConnection();
   }
 
   public void connect(String host) throws IOException, InterruptedException {

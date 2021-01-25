@@ -10,7 +10,7 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-public class JSONUtilsTest {
+public class JsonUtilsTest {
 
   @Before
   public void setup() {}
@@ -20,7 +20,7 @@ public class JSONUtilsTest {
 
     String jsonString = "{\n" + "\t\"foo\": 2,\n" + "\t\"test\": \"boo\"\n" + "}";
 
-    Map<String, Object> jsonAsMap = JSON.toMap(jsonString);
+    Map<String, Object> jsonAsMap = Json.toMap(jsonString);
 
     assertEquals(2, jsonAsMap.get("foo"));
     assertEquals("boo", jsonAsMap.get("test"));
@@ -34,7 +34,7 @@ public class JSONUtilsTest {
     map.put("foo", "bar");
     map.put("test", "2");
 
-    String jsonAsString = JSON.asString(map);
+    String jsonAsString = Json.asString(map);
 
     assertEquals(expectJSONAsString, jsonAsString);
   }
@@ -44,7 +44,7 @@ public class JSONUtilsTest {
 
     String jsonAsString = " [\n \t\"1\", \"2\", \"3\"\n ]";
 
-    List<String> jsonAsList = JSON.toArray(jsonAsString);
+    List<String> jsonAsList = Json.toArray(jsonAsString);
     assertEquals("1", jsonAsList.get(0));
     assertEquals(ArrayList.class, jsonAsList.getClass());
   }

@@ -1,15 +1,15 @@
 package com.purbon.kafka.topology.integration;
 
-import static com.purbon.kafka.topology.roles.rbac.RBACBindingsBuilder.LITERAL;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.DEVELOPER_READ;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.RESOURCE_OWNER;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.SECURITY_ADMIN;
+import static com.purbon.kafka.topology.roles.rbac.RbacBindingsBuilder.LITERAL;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.DEVELOPER_READ;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.RESOURCE_OWNER;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.SECURITY_ADMIN;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.purbon.kafka.topology.api.mds.AuthenticationCredentials;
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
 import java.io.IOException;
 import java.util.List;
@@ -17,18 +17,18 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MDSApiClientRbacIT extends MDSBaseTest {
+public class MdsApiClientRbacIT extends MdsBaseTest {
 
   private String mdsUser = "professor";
   private String mdsPassword = "professor";
 
-  private MDSApiClient apiClient;
+  private MdsApiClient apiClient;
 
   @Before
   public void before() throws IOException, InterruptedException {
     super.beforeEach();
     String mdsServer = "http://localhost:8090";
-    apiClient = new MDSApiClient(mdsServer);
+    apiClient = new MdsApiClient(mdsServer);
   }
 
   @Test

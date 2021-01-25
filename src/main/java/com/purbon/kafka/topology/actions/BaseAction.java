@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology.actions;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.purbon.kafka.topology.utils.JSON;
+import com.purbon.kafka.topology.utils.Json;
 import java.util.Map;
 
 public abstract class BaseAction implements Action {
@@ -11,7 +11,7 @@ public abstract class BaseAction implements Action {
   @Override
   public String toString() {
     try {
-      return JSON.asPrettyString(props());
+      return Json.asPrettyString(props());
     } catch (JsonProcessingException e) {
       return "";
     }

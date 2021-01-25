@@ -11,7 +11,7 @@ import com.purbon.kafka.topology.model.users.Consumer;
 import com.purbon.kafka.topology.model.users.KStream;
 import com.purbon.kafka.topology.model.users.Producer;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
-import com.purbon.kafka.topology.roles.acls.AclsBindingsBuilder;
+import com.purbon.kafka.topology.roles.acl.AclBindingsBuilder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,15 +28,15 @@ import org.apache.kafka.common.resource.ResourceType;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AclsBindingsBuilderTest {
+public class AclBindingsBuilderTest {
 
   TopologyBuilderConfig config;
-  AclsBindingsBuilder builder;
+  AclBindingsBuilder builder;
 
   @Before
   public void before() {
     config = new TopologyBuilderConfig();
-    builder = new AclsBindingsBuilder(config);
+    builder = new AclBindingsBuilder(config);
   }
 
   @Test
@@ -164,7 +164,7 @@ public class AclsBindingsBuilderTest {
   public void testConnectorAclsWithNoClusterCreate() {
     Properties configMap = config.asProperties();
     configMap.put(CONNECTOR_ALLOW_TOPIC_CREATE, false);
-    builder = new AclsBindingsBuilder(new TopologyBuilderConfig(emptyMap(), configMap));
+    builder = new AclBindingsBuilder(new TopologyBuilderConfig(emptyMap(), configMap));
 
     Connector connector = new Connector("User:foo");
     HashMap<String, List<String>> topicsMap = new HashMap<>();

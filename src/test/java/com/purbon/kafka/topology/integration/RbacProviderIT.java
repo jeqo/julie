@@ -1,12 +1,12 @@
 package com.purbon.kafka.topology.integration;
 
-import static com.purbon.kafka.topology.BuilderCLI.ALLOW_DELETE_OPTION;
-import static com.purbon.kafka.topology.BuilderCLI.BROKERS_OPTION;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.DEVELOPER_READ;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.DEVELOPER_WRITE;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.RESOURCE_OWNER;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.SECURITY_ADMIN;
-import static com.purbon.kafka.topology.roles.rbac.RBACPredefinedRoles.SYSTEM_ADMIN;
+import static com.purbon.kafka.topology.BuilderCli.ALLOW_DELETE_OPTION;
+import static com.purbon.kafka.topology.BuilderCli.BROKERS_OPTION;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.DEVELOPER_READ;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.DEVELOPER_WRITE;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.RESOURCE_OWNER;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.SECURITY_ADMIN;
+import static com.purbon.kafka.topology.roles.rbac.RbacPredefinedRoles.SYSTEM_ADMIN;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.anyList;
@@ -17,10 +17,10 @@ import com.purbon.kafka.topology.AccessControlManager;
 import com.purbon.kafka.topology.BackendController;
 import com.purbon.kafka.topology.ExecutionPlan;
 import com.purbon.kafka.topology.TopologyBuilderConfig;
-import com.purbon.kafka.topology.api.mds.MDSApiClient;
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.api.mds.MdsApiClient;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Platform;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
@@ -36,8 +36,8 @@ import com.purbon.kafka.topology.model.users.platform.Kafka;
 import com.purbon.kafka.topology.model.users.platform.KafkaConnect;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistry;
 import com.purbon.kafka.topology.model.users.platform.SchemaRegistryInstance;
-import com.purbon.kafka.topology.roles.RBACProvider;
-import com.purbon.kafka.topology.roles.rbac.RBACBindingsBuilder;
+import com.purbon.kafka.topology.roles.RbacProvider;
+import com.purbon.kafka.topology.roles.rbac.RbacBindingsBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,13 +54,13 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RBACPRoviderRbacIT extends MDSBaseTest {
+public class RbacProviderIT extends MdsBaseTest {
 
   private String mdsServer = "http://localhost:8090";
   private String mdsUser = "professor";
   private String mdsPassword = "professor";
 
-  private MDSApiClient apiClient;
+  private MdsApiClient apiClient;
   @Mock private BackendController cs;
   private ExecutionPlan plan;
 
@@ -69,7 +69,7 @@ public class RBACPRoviderRbacIT extends MDSBaseTest {
   @Before
   public void before() throws IOException, InterruptedException {
     super.beforeEach();
-    apiClient = new MDSApiClient(mdsServer);
+    apiClient = new MdsApiClient(mdsServer);
     apiClient.login(mdsUser, mdsPassword);
     apiClient.authenticate();
     apiClient.setKafkaClusterId(getKafkaClusterID());
@@ -77,8 +77,8 @@ public class RBACPRoviderRbacIT extends MDSBaseTest {
     apiClient.setConnectClusterID(getKafkaConnectClusterID());
 
     plan = ExecutionPlan.init(cs, System.out);
-    RBACProvider rbacProvider = new RBACProvider(apiClient);
-    RBACBindingsBuilder bindingsBuilder = new RBACBindingsBuilder(apiClient);
+    RbacProvider rbacProvider = new RbacProvider(apiClient);
+    RbacBindingsBuilder bindingsBuilder = new RbacBindingsBuilder(apiClient);
 
     Properties props = new Properties();
 

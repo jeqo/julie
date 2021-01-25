@@ -5,15 +5,15 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.purbon.kafka.topology.model.Impl.ProjectImpl;
-import com.purbon.kafka.topology.model.Impl.TopicImpl;
-import com.purbon.kafka.topology.model.Impl.TopologyImpl;
+import com.purbon.kafka.topology.model.impl.ProjectImpl;
+import com.purbon.kafka.topology.model.impl.TopicImpl;
+import com.purbon.kafka.topology.model.impl.TopologyImpl;
 import com.purbon.kafka.topology.model.Project;
 import com.purbon.kafka.topology.model.Topic;
 import com.purbon.kafka.topology.model.Topology;
-import com.purbon.kafka.topology.roles.RBACProvider;
+import com.purbon.kafka.topology.roles.RbacProvider;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
-import com.purbon.kafka.topology.roles.rbac.RBACBindingsBuilder;
+import com.purbon.kafka.topology.roles.rbac.RbacBindingsBuilder;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -31,8 +31,10 @@ import org.mockito.junit.MockitoRule;
 
 public class AccessControlWithRBACTest {
 
-  @Mock RBACProvider aclsProvider;
-  @Mock RBACBindingsBuilder bindingsBuilder;
+  @Mock
+  RbacProvider aclsProvider;
+  @Mock
+  RbacBindingsBuilder bindingsBuilder;
 
   @Mock ExecutionPlan plan;
   @Mock BackendController backendController;

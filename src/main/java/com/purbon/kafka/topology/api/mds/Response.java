@@ -1,7 +1,7 @@
 package com.purbon.kafka.topology.api.mds;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.purbon.kafka.topology.utils.JSON;
+import com.purbon.kafka.topology.utils.Json;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +40,7 @@ public class Response {
 
   private Map<String, Object> responseToJson(String response) {
     try {
-      return JSON.toMap(response);
+      return Json.toMap(response);
     } catch (JsonProcessingException e) {
       LOGGER.error(e);
       return new HashMap<>();

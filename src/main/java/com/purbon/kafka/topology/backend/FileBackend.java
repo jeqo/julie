@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.purbon.kafka.topology.BackendController.Mode;
 import com.purbon.kafka.topology.model.cluster.ServiceAccount;
 import com.purbon.kafka.topology.roles.TopologyAclBinding;
-import com.purbon.kafka.topology.utils.JSON;
+import com.purbon.kafka.topology.utils.Json;
 import java.io.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -98,7 +98,7 @@ public class FileBackend implements Backend {
             SERVICE_ACCOUNTS_TAG,
             line -> {
               try {
-                return JSON.toObject(line, ServiceAccount.class);
+                return Json.toObject(line, ServiceAccount.class);
               } catch (JsonProcessingException e) {
                 LOGGER.error(e);
                 return null;
@@ -186,7 +186,7 @@ public class FileBackend implements Backend {
     accounts.forEach(
         a -> {
           try {
-            writeLine(JSON.asString(a));
+            writeLine(Json.asString(a));
           } catch (JsonProcessingException e) {
             LOGGER.error(e);
           }

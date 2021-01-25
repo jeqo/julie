@@ -1,8 +1,8 @@
-package com.purbon.kafka.topology.serviceAccounts;
+package com.purbon.kafka.topology.serviceaccounts;
 
 import com.purbon.kafka.topology.PrincipalProvider;
 import com.purbon.kafka.topology.TopologyBuilderConfig;
-import com.purbon.kafka.topology.api.ccloud.CCloudCLI;
+import com.purbon.kafka.topology.api.ccloud.CCloudCli;
 import com.purbon.kafka.topology.model.cluster.ServiceAccount;
 import java.io.IOException;
 import java.util.HashSet;
@@ -11,11 +11,11 @@ import java.util.Set;
 
 public class CCloudPrincipalProvider implements PrincipalProvider {
 
-  private CCloudCLI cCloudCLI;
+  private CCloudCli cCloudCLI;
   private String env;
 
   public CCloudPrincipalProvider(TopologyBuilderConfig config) {
-    this.cCloudCLI = new CCloudCLI();
+    this.cCloudCLI = new CCloudCli();
     this.env = config.getConfluentCloudEnv();
   }
 

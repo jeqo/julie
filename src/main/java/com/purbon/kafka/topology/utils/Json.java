@@ -6,7 +6,7 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import java.util.List;
 import java.util.Map;
 
-public class JSON {
+public class Json {
 
   private static final ObjectMapper mapper;
 
