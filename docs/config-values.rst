@@ -10,10 +10,10 @@ Access control configuration
 Configure the access control methodology.
 
 **Property**: *topology.builder.access.control.class*
-**Default value**: "com.purbon.kafka.topology.roles.SimpleAclsProvider"
+**Default value**: "com.purbon.kafka.topology.roles.SimpleAclProvider"
 **values**:
  - RBAC: "com.purbon.topology.roles.RBACProvider"
- - ACLs: "com.purbon.kafka.topology.roles.SimpleAclsProvider"
+ - ACLs: "com.purbon.kafka.topology.roles.SimpleAclProvider"
 
 RBAC configuration
 -----------
